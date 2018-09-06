@@ -19,9 +19,9 @@
     <script src="js/moment.js"></script>
     <script>
         //自定义过滤器
-        Vue.filter('dateStr',function (value,format) {
+        Vue.filter('dateStr',function (value,format ='YYYY-MM-DD HH:MM:ss') {
 
-            return moment(value).format(format || 'YYYY-MM-DD HH:MM:ss')
+            return moment(value).format(format)
         })
 
         const vm = new Vue({
