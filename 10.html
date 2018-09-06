@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>指令</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <style>
+        [v-clock]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p ref="content">huanglu</p>
+        <button @click="hint">提示</button>
+        <p v-clock>{{msg}}</p>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                content:'',
+                msg:'黄璐'
+            },
+            methods:{
+                hint(){
+                    alert(this.$ref.content.textContent)
+                }
+            }
+        })
+
+
+    </script>
+
+<!--
+MVVM
+
+model:模型，数据对象（data）
+view:视图，模板页面
+viewModel:视图模型（Vue实例）
+
+-->
+</body>
+</html>
