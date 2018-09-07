@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 160px;
+				height: 100px;
+				background: #33ccff;
+				display: none;
+				position: absolute;
+			}
+			div ul{
+				text-align: center;
+			}
+			div li{
+				list-style-type: none;
+			}
+			button{
+				top: 300px;
+				left: 400px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul id="nav">
+				<li class="item1">
+					<a href="">蚂蚁部落一</a>
+				</li>
+				<li class="item2">
+					<a href="">蚂蚁部落二</a>
+				</li>
+				<li class="item3">
+					<a href="">蚂蚁部落三</a>
+				</li>
+				<li class="item4">
+					<a href="">蚂蚁部落四</a>
+				</li>
+				<li class="item5">
+					<a href="">蚂蚁部落五</a>
+				</li>
+			</ul>
+		</div>
+		<button id="btn">点击这里</button>
+		
+	<script>
+		window.onload = function () {
+			var btn = document.getElementsByTagName('button')[0];
+			var flt = document.getElementsByTagName('div')[0];
+			btn.onclick = function (e) {
+				var e = e || window.event;
+				if (e.cancelBubble) {
+					e.cancelBubble = true;
+				}else{
+					e.stopPropagation()
+				}
+				var x = btn.offsetLeft -15 +'px';
+				var y = btn.offsetTop - 100 + 'px';
+				flt.style.top = y;
+				flt.style.left = x;
+				flt.style.display = 'block';
+			}
+			document.onclick = function () {
+				flt.style.display = 'none';
+			}
+		}
+	</script>
+	</body>
+</html>

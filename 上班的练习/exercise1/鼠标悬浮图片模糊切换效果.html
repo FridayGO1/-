@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./js/jquery.min.js"></script>
+  <style>
+        html,body{
+
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .container{
+
+          padding: 20px;
+          position: relative;
+          overflow: hidden;
+        }
+        img{
+
+          height: 200px;
+          transition: .5s ease-in-out;
+        }
+        .container div{
+
+          width: 300px;
+          overflow: hidden;
+          float: left;
+          margin-left: 40px;
+        }
+        .blur img{
+
+          filter: blur(5px);
+          -webkit-filter:blur(5px);
+        }
+        .blur img:hover{
+
+          filter: blur(0);
+          -webkit-filter:blur(0);
+        }
+  </style>
+</head>
+<body>
+    <div class="blur container">
+        <div class="">
+            <img src="./img/add.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  body {
+      background-color: #22475E;
+      overflow: hidden;
+  }
+  .c1,.c2,.c3,.c4,.c5 {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ccc;
+      position: absolute;
+      top: 45%;
+  }
+  .c1:nth-child(1) {
+      background-color: #FF5460;
+      animation: move 2s infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  }
+  .c2:nth-child(2) {
+      background-color: #FF9D84;
+      animation: move 2s 150ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  }
+  .c3:nth-child(3) {
+      background-color: #F0E797;
+      animation: move 2s 300ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  }
+  .c4:nth-child(4) {
+      background-color: #75B08A;
+      animation: move 2s 450ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  }
+  .c5:nth-child(5) {
+      background-color: #06AAA2;
+      animation: move 2s 600ms infinite cubic-bezier(0.2, 0.64, 0.81, 0.23);
+  }
+  @keyframes move {
+    0% {
+        left: 0%;
+    }
+    100% {
+        left: 100%;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="c1"></div>
+  <div class="c2"></div>
+  <div class="c3"></div>
+  <div class="c4"></div>
+  <div class="c5"></div>
+
+</body>
+</html>

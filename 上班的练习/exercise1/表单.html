@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+				<form action="\XXX" :submit="handleSubmit">
+					<label>姓名:</label>
+					<input type="text" name="" value="" v-model="username">
+					<br>
+					<label>密码:</label>
+					<input type="password" name="" value="" v-model="pwd">
+					<br>
+					<label>性别:</label>
+					<input type="radio" name="female" value="female" v-model="sex">女
+					<input type="radio" name="male" value="male" v-model="sex">男
+					<br>
+					<label>爱好:</label>
+					<input type="checkbox" name="篮球" value="basket" v-model="likes">篮球
+					<input type="checkbox" name="足球" value="foot" v-model="likes">足球
+					<input type="checkbox" name="乒乓球" value="pingpang" v-model="likes">乒乓球
+					<br>
+					<label>城市:</label>
+					<select v-model="cityId">
+						<option value="">请选择</option>
+						<option :value="c.id" v-for="(c,index) in city" :key="index" >{{c.name}}</option>
+					</select>
+					<br>
+					<label>介绍:</label>
+					<textarea rows="5" v-model="desc"></textarea>
+					<br>
+					<input type="submit" @click="handleSubmit" value="提交"/>
+				</form>
+		</div>
+
+		<script src="js/vue.min.js"></script>
+		<script type="text/javascript">
+				let vm = new Vue({
+					el:'#app',
+					data:{
+							username:'',
+							pwd:'',
+							sex:'female',
+							likes:[],
+							city:[
+								{id:1,name:'BJ'},
+								{id:2,name:'SH'},
+								{id:3,name:'GZ'}
+							],
+							cityId:'',
+							desc:''
+					},
+					methods:{
+						handleSubmit(){
+							console.log(this.username,this.pwd,this.sex,this.likes,this.cityId,this.desc);
+						}
+					}
+				})
+		</script>
+	</body>
+</html>

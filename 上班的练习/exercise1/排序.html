@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" name="" value="" v-model="username">
+				<ul>
+					<li v-for="(p,index) in filterPersons">
+							{{index}}-----{{p.name}}-----{{p.age}}
+					</li>
+				</ul>
+				<button @click="orderType(1)">升序</button>
+				<button @click="orderType(2)">降序</button>
+				<button @click="orderType(0)">原本</button>
+		</div>
+
+		<script src="js/vue.min.js"></script>
+		<script type="text/javascript">
+				let vm = new Vue({
+					el:'#app',
+					data:{
+						username:'',
+						orderType:'0',
+						persons:[
+							{name:'lucy',age:18},
+							{name:'Bob',age:17},
+							{name:'Jack',age:19},
+							{name:'Rose',age:16}
+						]
+					},
+					computed:{
+
+					},
+					watch:{
+
+					}
+				})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="./js/jquery.min.js"></script>
+</head>
+<body>
+  <div id="box">
+    <p>蚂蚁部落一</p>
+  </div>
+  <input type="button" id="bt" name="" value="添加元素">
+  <input type="button" id="delete" name="" value="删除元素">
+
+  <script type="text/javascript">
+    var obox = document.getElementById('box');
+    function add () {
+      // body...
+       var element = document.createElement('p');
+       var node = document.createTextNode('蚂蚁部落二');
+
+       element.appendChild(node);
+       obox.appendChild(element);
+    }
+
+    window.onload = function(){
+      var obt = document.getElementById('bt');
+      var odelete = document.getElementById('delete');
+
+      obt.onclick = function(){
+        add();
+      }
+      odelete.onclick = function(){
+        var ps = obox.getElementsByTagName('p');
+        obox.removeChild(ps[0]);
+      }
+    }
+
+    let arr = [3,5,2,2,5,5];
+    let unique = [...new Set(arr)];
+    console.log(unique);
+
+    let address = "青岛市南区";
+    let webName = "蚂蚁部落";
+    [address, webName] = [webName, address];
+    console.log(address);
+    console.log(webName);
+
+    let func = () => [1,2,3];
+    let [a,b,c] = func();
+    console.log(a);
+    console.log(b);
+    console.log(c);
+
+    let = jsonData = {
+      di:8,
+      status:"ok",
+      data:[55,88]
+    };
+    let {id ,status,data} = jsonData;
+    console.log(id);
+    console.log(status);
+    console.log(data);
+
+    function randomStr (str,num) {
+      // body...
+      let arr = [...str];
+      let tmp = [];
+      for (let index = 0; index < index+1; index++) {
+        tmp.push(arr[Math.floor(Math.random()*arr.length)])
+        if ([...new Set(tmp)].length == num) {
+          return [...new Set(tmp)].join('');
+          break;
+        }
+      }
+    }
+    console.log(randomStr('antzone',3));
+  </script>
+</body>
+</html>
