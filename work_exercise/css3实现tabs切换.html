@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css3实现tabs切换</title>
+  <style media="screen">
+    .main{
+
+      width: 450px;
+      height: 200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .main > input{
+
+      opacity: 0;
+      width: 150px;
+      height: 40px;
+      position: absolute;
+      top:0;
+      cursor: pointer;
+      z-index: 33;
+    }
+    .main > span{
+
+      width: 150px;
+      height: 40px;
+      line-height: 40px;
+      position: absolute;
+      top: 0;
+      text-align: center;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+    .main > span{
+
+      transition: all .5s;
+    }
+    .main > input:hover + span{
+
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .main > input:checked + span{
+
+      background: #fff;
+    }
+    .main > input:hover + span,.main > input:checked + span{
+
+      color: #3498db;
+    }
+    #tab-1,#tab-1 + span{
+
+      left: 0;
+    }
+    #tab-2,#tab-2 + span{
+
+      left: 33.33%;
+    }
+    #tab-3,#tab-3 + span{
+
+      left: 66.67%;
+    }
+    .line{
+
+      background: #3498db;
+      width: 33.33%;
+      height:4px;
+      position: absolute;
+      top: 36px;
+    }
+    #tab-1:checked ~ .line{
+
+      left: 0;
+    }
+    #tab-2:checked ~ .line{
+
+      left: 33.33%;
+    }
+    #tab-3:checked ~ .line{
+
+      left: 66.67%;
+    }
+    .ease{
+
+      transition: all .5s
+    }
+    .content{
+
+      width: 450px;
+      height: 160px;
+      padding: 60px 0;
+    }
+    .content section{
+
+      width: 450px;
+      display: none;
+    }
+    .content section div{
+
+      font-size: 18px;
+      color: #cc3300;
+    }
+    #tab-1:checked ~ .content #tab-item-1{
+
+      display: block;
+    }
+    #tab-2:checked ~ .content #tab-item-2{
+
+      display: block;
+    }
+    #tab-3:checked ~ .content #tab-item-3{
+
+      display: block;
+    }
+  </style>
+</head>
+<body>
+    <div class="main">
+        <input type="radio" name="tab" id="tab-1" checked>
+        <span href="#tab-item-1" class="ys">蚂蚁部落一</span>
+
+        <input type="radio" name="tab" id="tab-2">
+        <span href="#tab-item-2" class="ys">蚂蚁部落二</span>
+
+        <input type="radio" name="tab" id="tab-3">
+        <span href="#tab-item-3" class="ys">蚂蚁部落三</span>
+
+        <div class="line ease"></div>
+
+        <div class="content">
+          <section id="tab-item-1">
+            <div>内容一</div>
+          </section>
+          <section id="tab-item-2">
+            <div>内容二</div>
+          </section>
+          <section id="tab-item-3">
+            <div>内容三</div>
+          </section>
+        </div>
+    </div>
+</body>
+</html>
