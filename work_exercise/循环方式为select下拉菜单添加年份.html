@@ -4,10 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>循环方式为select下拉菜单添加年份</title>
   <script src="./js/jquery-3.3.1.js" charset="utf-8"></script>
+  <style>
+    #sel{
+
+      width: 180px;
+      height: 38px;
+      border-radius: 5px;
+      padding-left: 5px;
+
+    }
+  </style>
 </head>
 <body>
+    <select class="" name="" id="sel"></select>
 
+<script type="text/javascript">
+    window.onload = function(){
+      var cbbYear = document.getElementById('sel');
+      for (var i = 2000; i < 2025; i++) {
+        var opt = new Option(i,i);
+        cbbYear.options.add(opt);
+      }
+    }
+    // new Option()方法用于动态生成选择项目，而new Option(str1,str2)中，str1是页面中看到的描述，str2是这一项的值
+</script>
 </body>
 </html>

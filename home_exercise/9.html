@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>显示格式化的日期时间</title>
-    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
 
 </head>
 <body>
@@ -15,8 +15,8 @@
         <p>时分秒{{date | dateStr('HH:MM:ss')}}</p>
     </div>
 
-    <script src="./js/vue.js"></script>
-    <script src="./js/moment.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/moment.js"></script>
     <script>
         //自定义过滤器
         Vue.filter('dateStr',function (value,format ='YYYY-MM-DD HH:MM:ss') {
