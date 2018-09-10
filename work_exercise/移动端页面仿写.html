@@ -20,6 +20,14 @@
   <link rel="stylesheet" href="../css/reset.css">
   <script src="../js/jquery-3.3.1.js" charset="utf-8"></script>
   <style>
+      input::input-placeholder{
+
+        color: #ccc;
+      }
+      input::-webkit-input-placeholder{
+
+        color: #ccc;
+      }
       .app{
 
         width: 100%;
@@ -68,7 +76,7 @@
         margin-top: 3px;
       }
       .code .codebtn{
-        background: #00b7ee;
+        background: #228FFF;
         width: 25%;
         height: 34px;
         border-radius: 5px;
@@ -89,11 +97,49 @@
       }
       .pwd .pwdbox{
         border: Transparent;
-        width: 70%;
+        width: 86%;
         height: 38px;
-        padding-left: 15px;
         font-size: 15px;
         margin-top: 3px;
+      }
+      .pwd img{
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+      }
+      .text{
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+      }
+      .text span{
+
+        color: #666;
+      }
+      .text a{
+
+        color: #228FFF;
+      }
+      .footer{
+
+        width: 100%;
+      }
+      .footer input{
+        width: 90%;
+        margin: 0 auto;
+        font-size: 16px;
+        height: 46px;
+        text-align: center;
+        display: block;
+        border-radius: 5px;
+        color: #fff;
+      }
+      .footer .reg{
+        background: #ffac00;
+        margin-bottom: 10px;
+      }
+      .footer .login{
+        background: #228FFF;
       }
   </style>
 </head>
@@ -111,9 +157,16 @@
           <input type="button" name="" value="发送验证码" class="codebtn inline">
         </div>
         <div class="pwd">
-          <input type="password" name="pwd" value="" placeholder="设置登录密码" class="pwdbox">
-          <img src="../img/closeeye .png" alt="">
+          <input type="password" name="pwd" value="" placeholder="设置登录密码" class="pwdbox inline">
+          <img src="../img/closeeye .png" alt="" class="inline">
         </div>
+        <div class="text">
+          <span>注册表示您已同意</span><a href="#">《xxx协议》</a>
+        </div>
+      </div>
+      <div class="footer">
+        <input type="button" name="" value="立即注册" class="reg">
+        <input type="button" name="" value="已有账号" class="login">
       </div>
     </div>
 </body>
