@@ -141,6 +141,7 @@
       .footer .login{
         background: #228FFF;
       }
+
   </style>
 </head>
 <body>
@@ -153,12 +154,19 @@
           <input type="text" name="phone" value="" placeholder="输入手机号码">
         </div>
         <div class="code">
-          <input type="text" name="code" value="" class="codebox inline" placeholder="输入验证码">
+          <input type="number" name="code" value="" class="codebox inline" placeholder="输入验证码" maxlength="6">
           <input type="button" name="" value="发送验证码" class="codebtn inline">
         </div>
         <div class="pwd">
-          <input type="password" name="pwd" value="" placeholder="设置登录密码" class="pwdbox inline">
-          <img src="../img/closeeye .png" alt="" class="inline">
+          <div class="" id="pwd_invisible">
+            <input type="password" name="pwd" id="input_invisible" value="" placeholder="设置登录密码" class="pwdbox inline">
+            <img src="../img/closeeye .png" alt="" class="inline" id="invisible"  onclick="hidePwd()">
+          </div>
+          <div class="" id="pwd_visible" style="display:none">
+            <input type="text" name="pwd" id="input_visible" value="" placeholder="设置登录密码" class="pwdbox inline" >
+            <img src="../img/openeye.png" alt="" class="inline" id="visible" onclick="showPwd()">
+          </div>
+          <!--<<a href="#" id="passwordeye" class="inline invisible"></a>-->
         </div>
         <div class="text">
           <span>注册表示您已同意</span><a href="#">《xxx协议》</a>
@@ -169,5 +177,25 @@
         <input type="button" name="" value="已有账号" class="login">
       </div>
     </div>
+
+    <script type="text/javascript">
+      var visible = document.getElementById('pwd_visible');
+      var invisible = document.getElementById('pwd_invisible');
+      var inputvisible = document.getElementById('input_visible');
+      var inputinvisible = document.getElementById('input_invisible')
+
+      function showPwd() {
+        var val = inputvisible.value;
+        inputinvisible.value = val;
+        invisible.style.display = '';
+        visible.style.display = 'none';
+      }
+      function hidePwd() {
+        var val = inputinvisible.value;
+        inputvisible.value = val;
+        invisible.style.display = 'none';
+        visible.style.display = '';
+      }
+    </script>
 </body>
 </html>
