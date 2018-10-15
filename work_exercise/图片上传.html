@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/jquery-3.3.1.js" charset="utf-8"></script>
+  <style media="screen">
+    #preview{
+
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+    <input type="file" name="" value="上传图片" id="imgPicker">
+    <!--<img src="" alt="" id="preview">-->
+    <div id="previewImg"></div>
+
+    <script type="text/javascript">
+    <!--单张显示-->
+    /*document.querySelector('#imgPicker').addEventListener('change',function(){
+        if (this.files.lenght === 0) {
+          document.querySelector('#preview').src = '';
+          return
+        }
+        var reader = new FileReader();
+        reader.onload = function(e){
+          document.querySelector('#preview').src = e.target.result;
+        };
+        reader.readAsDataURL(this.files[0]);
+      },false);*/
+
+    <!--多张显示-->
+      document.querySelector('#imgPicker').addEventListener('change',function(){
+        var imgFiles = $(this)[0].files;
+        for (var i = 0; i < imgFiles.length; i++) {
+          filePath = imgFiles[i].name;
+          fileFormat = filePath.split('.')[1].toLowerCase();
+          src = window.URL.createObjectURL(imgFiles[i]);
+          if (!fileFormat.match(/png|jpg|jpge/)) {
+            alert('上传错误');
+            return
+          }
+          var previewimg = document.querySelector('#previewImg');
+          var img = document.createElement('img');
+          img.width = 200;
+          img.height = 200;
+          img.src = src;
+          previewimg.appendChild(img);
+        }
+      })
+    </script>
+</body>
+</html>
