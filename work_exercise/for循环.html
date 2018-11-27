@@ -9,17 +9,62 @@
 <body>
     <script>
 
-        let sum = 0;
-        let count = 0;
+        // let sum = 0;
+        // let count = 0;
 
-        for (let i = 0; i < 100; i++) {
-            if (i % 7 == 0) {
-                sum += i;
-                count++;
+        // for (let i = 0; i < 100; i++) {
+        //     if (i % 7 == 0) {
+        //         sum += i;
+        //         count++;
+        //     }
+        // }
+        // document.write(sum);
+        // console.log(sum)
+
+        // for (let j = 100; j < 1000; j++) {
+        //     const bai = parseInt(j/100);
+        //     //console.log("bai:" + bai)
+
+        //     const shi = parseInt(j/10%10)
+        //     //console.log("shi:" + shi)
+
+        //     const ge = j % 10;
+
+        //     if (bai*bai*bai+shi*shi*shi+ge*ge*ge === j) {
+        //         console.log(j);
+        //     }
+        // }
+
+            // 
+            
+        //九九乘法表
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j <= i ; j++) {
+                document.write(j + '*' + i + '=' + i*j+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+            }
+            document.write('</br> ');
+        }
+
+
+        //判断质数
+        var flag = true;
+
+        for (let i = 2; i < 100; i++) {
+            for (let j = 2; j < Math.sqrt(i); j++) {
+                if (i % j == 0) {
+                    flag = false;
+                }  
+            }
+
+            if (flag) {
+                console.log(i)
+            
             }
         }
-        document.write(sum);
-        console.log(sum)
+
+        //console.time('计时器的名字作为参数') 计时器
+        //console.timeEnd('计时器的名字作为参数') 结束计时器
+     
     </script>
 </body>
 </html>
