@@ -46,7 +46,7 @@
 </head>
 <body>
     <div id="app">
-       <button @click="isShow = !isShow">toggle</button>
+        <button @click="isShow = !isShow">toggle</button>
         <transition name="xxx">
             <p v-show="isShow">hello</p>
         </transition>
@@ -58,7 +58,7 @@
           <br>
          <button @click="sshow = !sshow">toggle render</button>
           <transition name="bounce">
-              <p v-show="sshow" style="display:bolck">hello</p>
+              <p v-show="sshow" style="display:block">hello</p>
           </transition>
     </div>
 
