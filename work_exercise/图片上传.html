@@ -18,13 +18,13 @@
 <body>
 
     <input type="file" name="" value="上传图片" id="imgPicker">
-    <!--<img src="" alt="" id="preview">-->
-    <div id="previewImg"></div>
+    <img src="" alt="" id="preview">
+    <!--<div id="previewImg"></div>-->
 
     <script type="text/javascript">
     /*单张显示*/
-    /*document.querySelector('#imgPicker').addEventListener('change',function(){
-        if (this.files.lenght === 0) {
+    document.querySelector('#imgPicker').addEventListener('change',function(){
+        if (this.files.length === 0) {
           document.querySelector('#preview').src = '';
           return
         }
@@ -33,10 +33,10 @@
           document.querySelector('#preview').src = e.target.result;
         };
         reader.readAsDataURL(this.files[0]);
-      },false);*/
+      },false);
 
     /*多张显示*/
-      document.querySelector('#imgPicker').addEventListener('change',function(){
+      /*document.querySelector('#imgPicker').addEventListener('change',function(){
         var imgFiles = $(this)[0].files;
         for (var i = 0; i < imgFiles.length; i++) {
           filePath = imgFiles[i].name;
@@ -53,7 +53,7 @@
           img.src = src;
           previewimg.appendChild(img);
         }
-      })
+      })*/
     </script>
 </body>
 </html>
