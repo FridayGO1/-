@@ -5,8 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        window.onload = function () {
+            var items = document.getElementsByName('items');
+            var checkedAllBox = document.getElementById('checkedAllBox');
+            var checkedAllBtn = document.getElementById('checkedAllBtn');
+            checkedAllBtn.onclick = function () {
+                for (let i = 0; i < items.length; i++) {
+                    items[i].checked = true;
+                }
+                checkedAllBox.checked = true;
+            }
+
+            var checkedNoBtn = document.getElementById('checkedNoBtn');
+            checkedNoBtn.onclick = function () {
+                for (let i = 0; i < items.length; i++) {
+                    items[i].checked = false;
+                }
+                checkedAllBox.checked = false;
+            }
+
+            var checkedRevBtn = document.getElementById('checkedRevBtn');
+            checkedRevBtn.onclick = function () {
+                checkedAllBox.checked = true;
+                for (let i = 0; i < items.length; i++) {
+                //     if (items[i].checked) {
+                //         items[i].checked = false;
+                //     }else{
+                //         items[i].checked = true;
+                //     }
+                    items[i].checked = !items[i].checked;
+                    if (!items[i].checked) {
+                            checkedAllBox.checked = false;
+                    }
+                }  
+            }
+
+            var sendBtn = document.getElementById('sendBtn');
+            sendBtn.onclick = function () {
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i].checked) {
+                        alert(items[i].value)
+                    }
+                }
+            }
+
+            checkedAllBox.onclick = function () {
+                for (let i = 0; i < items.length; i++) {
+                    items[i].checked = this.checked;
+                }
+            }
+
+            for (let i = 0; i < items.length; i++) {
+                items[i].onclick = function () {
+
+                    checkedAllBox.checked = true;
+                    for (let j = 0; j < items.length; j++) {
+                        if (!items[j].checked) {
+                            checkedAllBox.checked = false;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body>
-    
+    <form action="" method="post">
+        你最爱的运动是？
+        <input type="checkbox" id="checkedAllBox">全选/全部选
+        <br />
+        <input type="checkbox" name="items" value="足球" >足球
+        <input type="checkbox" name="items" value="篮球" >篮球
+        <input type="checkbox" name="items" value="羽毛球" >羽毛球
+        <input type="checkbox" name="items" value="乒乓球" >乒乓球
+        <br />
+        <input type="button" value="全选" id="checkedAllBtn">
+        <input type="button" value="全不选" id="checkedNoBtn">
+        <input type="button" value="反选" id="checkedRevBtn">
+        <input type="button" value="提交" id="sendBtn">
+
+    </form>
 </body>
 </html>
