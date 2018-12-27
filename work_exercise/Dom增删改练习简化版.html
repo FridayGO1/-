@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        function delA() {
+            var tr = this.parentNode.parentNode;
+
+                // 获取要删除的名字
+                var td = tr.getElementsByTagName("td")[0].innerHTML;
+
+                //删除之前弹出提示框
+                /*
+                    confirm()用于弹出一个带有确认和取消按钮的提示框
+                    需要一个字符串作为参数，改字符串将会作为提示文字显示出来
+                    如果用户点击确认则会返回true，取消返回false
+                */
+                var flag = confirm("确认删除"+ td +"吗？");
+
+                if (flag) {
+                    tr.parentNode.removeChild(tr);
+                }
+                /*
+                    点击超链接以后，超链接会跳转页面，这个是超链接的默认行为，
+                    但是此时我们不希望出现默认行为，可以通过在响应函数的最后return false来取消默认行为
+                */
+                return false;
+        }
+
+    window.onload = function () {
+        // 获取所有超链接
+        var allA = document.getElementsByTagName("a");
+
+        for (let i = 0; i < allA.length; i++) {
+            // for循环会在页面加载完成之后立即执行 而响应函数会在超链接被点击的时候才执行
+            allA[i].onclick = delA;
+        }
+
+        /*
+            添加员工功能
+                - 点击添加按钮以后，将员工的信息添加到表格中
+
+        */
+
+        // 为提交按钮绑定一个单机响应函数
+        var addEmpButton = document.getElementById("addEmpButton");
+        addEmpButton.onclick = function () {
+            
+            var name = document.getElementById("empName").value;
+
+            var email = document.getElementById("email").value;
+
+            var salary = document.getElementById("salary").value;
+
+            var tr = document.createElement("tr");
+
+            // 简化开始
+            tr.innerHTML += "<td>"+ name +"</td>"+
+                            "<td>"+ email +"</td>"+
+                            "<td>"+ salary +"</td>"+
+                            "<td><a href='javascript:;'>delete</a></td>";
+            
+            // 获取刚刚添加的a元素，并为其绑定单击响应函数
+            var a = tr.getElementsByTagName("a")[0];
+            a.onclick = delA; 
+            // 简化结束
+
+            var employeeTable = document.getElementById("employeeTable");
+
+            // 获取employeeTable中的tbody
+            var tbody = employeeTable.getElementsByTagName("tbody")[0];
+
+            tbody.appendChild(tr);
+
+        }
+
+    }
+    </script>
+</head>
+<body>
+    <table id="employeeTable" border="1">
+        <tr>
+            <th>name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>Jerry@sohu.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id=002">delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>Bob@tom.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id=003">delete</a></td>
+        </tr>
+    </table>
+
+    <div id="formDiv">
+        <h4>添加新员工</h4>
+        <table>
+            <tr>
+                <td class="word">name: </td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName">
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email: </td>
+                <td class="inp">
+                    <input type="text" name="email" id="email">
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary: </td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton" >submit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
