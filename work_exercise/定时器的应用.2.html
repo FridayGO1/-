@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    } 
+
+    #box1{
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        left: 0;
+    }
+
+    #box2{
+        width: 100px;
+        height: 100px;
+        background: yellow;
+        position: absolute;
+        left: 0;
+        top: 200px;
+    }
+    </style>
+
+    <script>
+    window.onload = (() => {
+
+        var box1 = document.getElementById("box1");
+
+        var box2 = document.getElementById("box2");
+
+        var btn01 = document.getElementById("btn01");
+
+        var btn02 = document.getElementById("btn02");
+
+        var btn03 = document.getElementById("btn03");
+
+        var btn04 = document.getElementById("btn04");
+
+
+        var timer;
+
+        // 点击按钮以后，使box1向右移动
+        btn01.onclick = (() => {
+
+            move(box1, "left", 800 , 10);
+        });
+
+        // 点击按钮以后，使box1向左移动
+        btn02.onclick = (() => {
+            move(box1,"left", 0 , 10);
+        });
+
+        btn03.onclick = (() => {
+            move(box2,"left", 800 , 10);
+        });
+
+        btn04.onclick = (() => {
+            alert(1);
+            move(box2, "width", 800 , 10);
+        });
+
+        // 尝试创建一个可以执行简单动画的函数
+        /*
+            参数：
+                obj:要执行动画的对象
+                attr:要执行动画的样式
+                target：执行动画的目标位置
+                speed: 移动的速度
+                callback: 回调函数
+        */
+        function move(obj, attr, target, speed, callback) {
+
+            clearInterval(obj.timer);
+
+            // 判断速度的正负值
+            var current = parseInt(getStyle(obj, attr));// 取出合法数字
+
+            if (current > target) {
+                speed = -speed;
+            }
+
+            // 想执行动画的对象中添加一个timer属性，用来保存他自己的定时器的标识
+            obj.timer = setInterval(() => {
+
+                var oldValue = parseInt(getStyle(obj, attr));// 取出合法数字
+
+                var newValue = oldValue + speed;
+
+                /*
+                    判断newVaule是否大于800
+                    从800向0移动
+                    向左移动时，需要判断newValue是否小于target
+                    向右移动时，需要判断newValue是否大于target
+                */
+                if ((speed < 0 && newValue < target) || (speed > 0 && newValue > target)) {
+                    newValue = target;
+
+                };
+                
+                //alert(oldValue);
+
+                obj.style[attr] = newValue + "px";
+
+                
+                if (newValue === 0) {
+                    clearInterval(obj.timer);
+                    // 动画执行完毕，调用回调函数
+                    callback && callback();
+                };
+
+            }, 30);
+        }
+
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                return getComputedStyle(obj, null)[name];
+            }else{
+                return obj.currentStyle[name];
+            }
+        }
+
+    })
+    </script>
+</head>
+<body>
+    <button id="btn01">点击按钮以后box1向右移动</button>
+    <button id="btn02">点击按钮以后box1向左移动</button>
+    <button id="btn03">点击按钮以后box2向右移动</button>
+    <button id="btn04">测试按钮</button>
+    <br><br/>
+
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>
